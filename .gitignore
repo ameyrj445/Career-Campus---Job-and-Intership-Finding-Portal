@@ -45,3 +45,5 @@ yarn.lock
 /.pnp
 .pnp.js
 
+extras\project_report.txt
+extras\project_diagram.html

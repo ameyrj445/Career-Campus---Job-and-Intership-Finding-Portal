@@ -1,136 +1,76 @@
-import mysql from 'mysql2/promise';
-import dotenv from 'dotenv';
+import { jobsData, internshipsData, uniqueSorted, normalizeString } from './dataLoader.js';
 import { getJobTags } from './jobQueries.js';
 import { getInternshipTags } from './internshipQueries.js';
-dotenv.config();
 
-// MySQL connection configuration
-const pool = mysql.createPool({
-    host: process.env.SQL_HOST,
-    user: process.env.SQL_USER,
-    password: process.env.SQL_PASSWORD,
-    database: process.env.SQL_DATABASE,
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
-});
-
-// Helper function to clean location names
-const cleanLocation = (location) => location ? location.replace(/, India$/, '') : '';
+const cleanLocation = (location) => location ? location.replace(/, India$/, '').trim() : '';
 
 // Get distinct categories (combined from both tables)
 export async function getCategories() {
-    try {
-        const [rows] = await pool.execute(`
-            SELECT DISTINCT Category AS category FROM internship_listings
-            UNION
-            SELECT DISTINCT category FROM job_listings
-            ORDER BY category
-        `);
-        return rows;
-    } catch (err) {
-        console.error('MySQL error in getCategories:', err);
-        throw err;
-    }
+    return uniqueSorted([
+        ...internshipsData.map(item => item.Category),
+        ...jobsData.map(item => item.category)
+    ]);
 }
 
 // Get distinct locations (combined from both tables)
 export async function getLocations() {
-    try {
-        const [rows] = await pool.execute(`
-            SELECT DISTINCT Location AS location FROM internship_listings
-            UNION
-            SELECT DISTINCT location FROM job_listings
-            ORDER BY location
-        `);
-        return rows.map(row => ({
-            ...row,
-            location: cleanLocation(row.location)
-        }));
-    } catch (err) {
-        console.error('MySQL error in getLocations:', err);
-        throw err;
-    }
+    return uniqueSorted([
+        ...internshipsData.map(item => item.Location),
+        ...jobsData.map(item => item.location)
+    ]).map(location => ({ location: cleanLocation(location) }));
 }
 
 // Get distinct companies (combined from both tables)
 export async function getCompanies() {
-    try {
-        const [rows] = await pool.execute(`
-            SELECT DISTINCT CompanyName AS company_name FROM internship_listings
-            UNION
-            SELECT DISTINCT company_name FROM job_listings
-            ORDER BY company_name
-        `);
-        return rows;
-    } catch (err) {
-        console.error('MySQL error in getCompanies:', err);
-        throw err;
-    }
+    return uniqueSorted([
+        ...internshipsData.map(item => item.CompanyName),
+        ...jobsData.map(item => item.company_name)
+    ]);
 }
 
 // Get all unique tags (combined from both tables)
 export async function getTags() {
-    try {
-        // Get tags from both job and internship listings
-        const jobTagsList = await getJobTags();
-        const internshipTagsList = await getInternshipTags();
-        
-        // Combine all unique tags
-        const allTags = [...new Set([...jobTagsList, ...internshipTagsList])];
-        return allTags.sort();
-    } catch (err) {
-        console.error('MySQL error in getTags:', err);
-        throw err;
-    }
+    const jobTagsList = await getJobTags();
+    const internshipTagsList = await getInternshipTags();
+    return uniqueSorted([...jobTagsList, ...internshipTagsList]);
 }
 
 // Search across both jobs and internships
 export async function searchListings(searchTerm) {
-    try {
-        const [rows] = await pool.execute(`
-            SELECT 
-                'internship' as type,
-                ID as id,
-                TitleAndRole as title,
-                CompanyName as company,
-                Location as location,
-                Category as category,
-                Stipend as compensation,
-                DatePosted as posted_date,
-                Tags as tags
-            FROM internship_listings
-            WHERE 
-                TitleAndRole LIKE ? OR
-                CompanyName LIKE ? OR
-                Category LIKE ? OR
-                Tags LIKE ?
-            UNION ALL
-            SELECT 
-                'job' as type,
-                id,
-                title_and_role as title,
-                company_name as company,
-                location,
-                category,
-                salary_LPA as compensation,
-                date_posted as posted_date,
-                tags
-            FROM job_listings
-            WHERE 
-                title_and_role LIKE ? OR
-                company_name LIKE ? OR
-                category LIKE ? OR
-                tags LIKE ?
-            ORDER BY posted_date DESC
-        `, Array(8).fill(`%${searchTerm}%`));
+    const normalizedTerm = normalizeString(searchTerm);
+    const allRows = [
+        ...internshipsData.map(item => ({
+            type: 'internship',
+            id: item.ID,
+            title: item.TitleAndRole,
+            company: item.CompanyName,
+            location: item.Location,
+            category: item.Category,
+            compensation: item.Stipend,
+            posted_date: item.DatePosted,
+            tags: item.Tags
+        })),
+        ...jobsData.map(item => ({
+            type: 'job',
+            id: item.id,
+            title: item.title_and_role,
+            company: item.company_name,
+            location: item.location,
+            category: item.category,
+            compensation: item.salary_LPA,
+            posted_date: item.date_posted,
+            tags: item.tags
+        }))
+    ];
 
-        return rows.map(row => ({
-            ...row,
-            location: cleanLocation(row.location)
-        }));
-    } catch (err) {
-        console.error('MySQL error in searchListings:', err);
-        throw err;
-    }
+    const filteredRows = normalizedTerm
+        ? allRows.filter(row =>
+            normalizeString(row.title).includes(normalizedTerm) ||
+            normalizeString(row.company).includes(normalizedTerm) ||
+            normalizeString(row.category).includes(normalizedTerm) ||
+            normalizeString(row.tags).includes(normalizedTerm)
+        )
+        : allRows;
+
+    return filteredRows.sort((a, b) => (b.posted_date || '').localeCompare(a.posted_date || ''));
 } 
