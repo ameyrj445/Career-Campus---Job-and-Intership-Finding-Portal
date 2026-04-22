@@ -1,4 +1,4 @@
-# Career Compass
+# Career Compass - Job and Intership Finding Portal 
 
 A full-stack Job and Internship Portal built with a React frontend and an Express/MySQL backend.
 
