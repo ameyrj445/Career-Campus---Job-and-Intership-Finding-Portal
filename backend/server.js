@@ -180,7 +180,6 @@ app.get('/api/search', async (req, res, next) => {
 app.use(errorHandler);
 
 // Start the server
-
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

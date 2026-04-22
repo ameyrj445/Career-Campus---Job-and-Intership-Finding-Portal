@@ -1,7 +1,6 @@
 import { internshipsData, uniqueSorted, normalizeString, containsTag } from './dataLoader.js';
 
 const cleanLocation = (location) => location ? location.replace(/,\s*India$/i, '').trim() : '';
-
 const parseList = (value) => value.toString().split(',').map(item => item.trim()).filter(Boolean);
 
 // Get all internships with filters
