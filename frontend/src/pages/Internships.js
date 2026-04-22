@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import { useJobContext } from '../context/JobContext';
 import './Internships.css';
 
+
 function Internships() {
   const { internships, loading, error, switchView, activeView } = useJobContext();
 

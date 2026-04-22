@@ -29,6 +29,7 @@ function Home() {
       <footer>
         © Developed By Amey Raj Jain (ARJOIDIFY)
       </footer>
+      
     </div>
   );
 }
