@@ -102,3 +102,6 @@ export async function getInternshipTags() {
     internshipsData.forEach(item => item.tagsArray.forEach(tag => allTags.add(tag)));
     return Array.from(allTags).sort();
 }
+
+
+
