@@ -107,4 +107,5 @@ export async function getJobTags() {
     const allTags = new Set();
     jobsData.forEach(job => job.tagsArray.forEach(tag => allTags.add(tag)));
     return Array.from(allTags).sort();
-}
+}                           
+                                        
