@@ -21,5 +21,4 @@ function Background() {
     <div style={backgroundStyle}></div>
   );
 }
-
 export default Background; 
