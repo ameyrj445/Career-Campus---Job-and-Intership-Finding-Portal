@@ -145,3 +145,4 @@ export const isExactly = (value, term) => normalizeString(value) === normalizeSt
 
 export const containsTag = (tagArray, tag) => tagArray.some(item => normalizeString(item) === normalizeString(tag));
 
+                                       

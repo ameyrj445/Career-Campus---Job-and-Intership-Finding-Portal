@@ -101,4 +101,4 @@ export async function getInternshipTags() {
     const allTags = new Set();
     internshipsData.forEach(item => item.tagsArray.forEach(tag => allTags.add(tag)));
     return Array.from(allTags).sort();
-}
+}                                 
