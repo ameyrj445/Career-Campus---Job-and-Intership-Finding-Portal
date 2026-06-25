@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const extrasDir = path.resolve(__dirname, '../extras');
-                                  
+                                                
 const jobColumns = [
     'id',
     'title_and_role',
@@ -145,3 +145,4 @@ export const isExactly = (value, term) => normalizeString(value) === normalizeSt
 
 export const containsTag = (tagArray, tag) => tagArray.some(item => normalizeString(item) === normalizeString(tag));
                               
+

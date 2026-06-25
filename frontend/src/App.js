@@ -25,6 +25,5 @@ function App() {
     </ApiProvider>
   );
 }
-
 export default App;
                         
