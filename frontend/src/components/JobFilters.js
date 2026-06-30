@@ -99,6 +99,7 @@ function JobFilters() {
       }
     };
 
+    
     fetchFilterOptions();
   }, [jobs]);
 
@@ -324,5 +325,4 @@ function JobFilters() {
     </div>
   );
 }
-
 export default JobFilters;
