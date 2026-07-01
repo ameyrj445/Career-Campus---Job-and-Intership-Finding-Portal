@@ -99,7 +99,6 @@ function JobFilters() {
       }
     };
 
-    
     fetchFilterOptions();
   }, [jobs]);
 
