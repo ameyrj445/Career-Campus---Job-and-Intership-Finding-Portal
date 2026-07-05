@@ -20,5 +20,6 @@ function Background() {
   return (
     <div style={backgroundStyle}></div>
   );
-}                                    
+}   
+                                 
 export default Background; 

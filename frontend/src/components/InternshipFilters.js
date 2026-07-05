@@ -56,7 +56,7 @@ function InternshipFilters() {
       tags: contextFilters.tags || []
     });
   }, [contextFilters]);
-
+                             
   // Fetch all available filter options from API
   useEffect(() => {
     const fetchFilterOptions = async () => {
