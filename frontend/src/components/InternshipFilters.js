@@ -67,7 +67,7 @@ function InternshipFilters() {
         if (data.categories) {
           setCategories(data.categories.map(cat => ({ value: cat, label: cat })));
         }
-                                                             
+                                                                                
         if (data.locations) {
           setLocations(data.locations.map(loc => ({
             value: loc,
