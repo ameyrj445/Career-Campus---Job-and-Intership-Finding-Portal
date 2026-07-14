@@ -70,7 +70,7 @@ function InternshipFilters() {
                                                                                 
         if (data.locations) {
           setLocations(data.locations.map(loc => ({
-            value: loc,
+            value: loc,                       
             label: loc.replace(/,\s*India$/i, '').trim()
           })));
         }
@@ -83,7 +83,7 @@ function InternshipFilters() {
         // Fallback to extracting from internships if API fails
         extractFiltersFromInternships();
       }
-    };
+    };                     
 
     const extractFiltersFromInternships = () => {
       if (internships && internships.length > 0) {
