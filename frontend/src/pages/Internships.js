@@ -55,4 +55,4 @@ function Internships() {
     </>
   );
 }
-export default Internships; 
+export default Internships;                     
