@@ -20,6 +20,7 @@
   cursor: pointer;
 }                                                     
 
+
 .job-card.flipped {
   transform: rotateY(180deg);
 }
