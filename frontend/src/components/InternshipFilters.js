@@ -83,7 +83,7 @@ function InternshipFilters() {
         // Fallback to extracting from internships if API fails
         extractFiltersFromInternships();
       }
-    };                     
+    };                         
 
     const extractFiltersFromInternships = () => {
       if (internships && internships.length > 0) {
