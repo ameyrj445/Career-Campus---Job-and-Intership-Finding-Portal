@@ -84,9 +84,9 @@ function InternshipFilters() {
         extractFiltersFromInternships();
       }
     };                         
-
+                        
     const extractFiltersFromInternships = () => {
-      if (internships && internships.length > 0) {
+      if (internships && internships.length > 0) {                   
         const uniqueCategories = [...new Set(internships.map(intern => intern.Category))].filter(Boolean);
         // Keep the full location string for filtering but display without India suffix
         const uniqueLocations = [...new Set(internships.map(intern => intern.Location))].filter(Boolean);
