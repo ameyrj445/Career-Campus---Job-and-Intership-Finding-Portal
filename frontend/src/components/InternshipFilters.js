@@ -85,7 +85,6 @@ function InternshipFilters() {
       }
     };                         
                
-    
     const extractFiltersFromInternships = () => {
       if (internships && internships.length > 0) {
         const uniqueCategories = [...new Set(internships.map(intern => intern.Category))].filter(Boolean);

@@ -18,9 +18,9 @@
 
 .job-card {
   cursor: pointer;
-}                                                     
+}                                                                               
                        
-.job-card.flipped {
+.job-card.flipped {                                       
   transform: rotateY(180deg);
 }
 

@@ -270,5 +270,4 @@ export const JobProvider = ({ children }) => {
         </JobContext.Provider>
     );
 };
-
 export default JobContext;
