@@ -185,3 +185,4 @@ app.listen(PORT, () => {
 });
       <span class="mini-type">${esc(a.attack_type)}</span>
                                  
+      
