@@ -177,12 +177,10 @@ app.get('/api/search', async (req, res, next) => {
 });
 
 // Apply error handling middleware
-app.use(errorHandler);
+app.use(errorHandler);                                                     
 
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
       <span class="mini-type">${esc(a.attack_type)}</span>
-                                 
-      

@@ -99,7 +99,7 @@ export async function getJobLocations() {
 }
 
 export async function getJobCompanies() {
-    return uniqueSorted(jobsData.map(job => job.company_name));
+    return uniqueSorted(jobsData.map(job => job.company_name));                                     
 }
           
 // Get all unique tags for jobs
@@ -108,3 +108,4 @@ export async function getJobTags() {
     jobsData.forEach(job => job.tagsArray.forEach(tag => allTags.add(tag)));
     return Array.from(allTags).sort();
 }
+                                          
