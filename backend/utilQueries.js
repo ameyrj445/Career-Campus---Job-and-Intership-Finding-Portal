@@ -26,7 +26,7 @@ export async function getCompanies() {
         ...internshipsData.map(item => item.CompanyName),                
         ...jobsData.map(item => item.company_name)                       
     ]);
-}
+}                          
 
 // Get all unique tags (combined from both tables)
 export async function getTags() {

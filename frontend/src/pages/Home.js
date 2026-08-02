@@ -30,7 +30,7 @@ function Home() {
         © Developed By Amey Raj Jain (ARJOIDIFY)
       </footer>
       
-    </div>
+    </div>                                    
   );
-}
+}                   
 export default Home;                                                                     
