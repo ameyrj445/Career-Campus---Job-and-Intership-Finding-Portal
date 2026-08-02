@@ -17,14 +17,14 @@ export async function getLocations() {
     return uniqueSorted([
         ...internshipsData.map(item => item.Location),
         ...jobsData.map(item => item.location)
-    ]).map(location => ({ location: cleanLocation(location) }));
+    ]).map(location => ({ location: cleanLocation(location) }));                            
 }
 
 // Get distinct companies (combined from both tables)
 export async function getCompanies() {
     return uniqueSorted([
-        ...internshipsData.map(item => item.CompanyName),
-        ...jobsData.map(item => item.company_name)
+        ...internshipsData.map(item => item.CompanyName),                
+        ...jobsData.map(item => item.company_name)                       
     ]);
 }
 

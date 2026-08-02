@@ -267,7 +267,7 @@ export const JobProvider = ({ children }) => {
             switchView
         }}>
             {children}
-        </JobContext.Provider>
-    );
-};
+        </JobContext.Provider>              
+    );             
+};          
 export default JobContext;
