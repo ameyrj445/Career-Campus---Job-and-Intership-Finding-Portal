@@ -23,14 +23,14 @@ function Home() {
       </div>
       
       <p className="description">
-        Find the perfect opportunity tailored to your preferences.
+        Find the perfect opportunity tailored to your preferences.                                     
       </p>
       
       <footer>
         © Developed By Amey Raj Jain (ARJOIDIFY)
       </footer>
       
-    </div>                                    
+    </div>                                                                                          
   );
 }                   
 export default Home;                                                                     

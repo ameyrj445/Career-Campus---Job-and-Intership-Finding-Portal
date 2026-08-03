@@ -81,7 +81,7 @@ function InternshipFilters() {
       } catch (error) {
         console.error('Error fetching filter options:', error);
         // Fallback to extracting from internships if API fails
-        extractFiltersFromInternships();
+        extractFiltersFromInternships();                      
       }
     };                         
                
@@ -94,7 +94,7 @@ function InternshipFilters() {
 
         setCategories(uniqueCategories.map(cat => ({ value: cat, label: cat })));
         setLocations(uniqueLocations.map(loc => ({ value: loc, label: loc })));
-        setCompanies(uniqueCompanies.map(comp => ({ value: comp, label: comp })));
+        setCompanies(uniqueCompanies.map(comp => ({ value: comp, label: comp })));                          
       }
     };
 
