@@ -85,19 +85,19 @@ function InternshipFilters() {
       }
     };                         
                
-    const extractFiltersFromInternships = () => {
-      if (internships && internships.length > 0) {
-        const uniqueCategories = [...new Set(internships.map(intern => intern.Category))].filter(Boolean);
-        // Keep the full location string for filtering but display without India suffix
-        const uniqueLocations = [...new Set(internships.map(intern => intern.Location))].filter(Boolean);
-        const uniqueCompanies = [...new Set(internships.map(intern => intern.CompanyName))].filter(Boolean);
-
-        setCategories(uniqueCategories.map(cat => ({ value: cat, label: cat })));
-        setLocations(uniqueLocations.map(loc => ({ value: loc, label: loc })));
-        setCompanies(uniqueCompanies.map(comp => ({ value: comp, label: comp })));                          
-      }
-    };
-
+    const extractFiltersFromInternships = () => {       
+      if (internships && internships.length > 0) {            
+        const uniqueCategories = [...new Set(internships.map(intern => intern.Category))].filter(Boolean); 
+        // Keep the full location string for filtering but display without India suffix                       
+        const uniqueLocations = [...new Set(internships.map(intern => intern.Location))].filter(Boolean); 
+        const uniqueCompanies = [...new Set(internships.map(intern => intern.CompanyName))].filter(Boolean); 
+                                                                                                                      
+        setCategories(uniqueCategories.map(cat => ({ value: cat, label: cat })));                                           
+        setLocations(uniqueLocations.map(loc => ({ value: loc, label: loc })));         
+        setCompanies(uniqueCompanies.map(comp => ({ value: comp, label: comp })));                             
+      }                                                                              
+    };     
+      
     fetchFilterOptions();
   }, [internships]);
 

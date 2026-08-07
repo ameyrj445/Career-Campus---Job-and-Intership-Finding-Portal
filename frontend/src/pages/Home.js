@@ -29,8 +29,7 @@ function Home() {
       <footer>
         © Developed By Amey Raj Jain (ARJOIDIFY)
       </footer>
-      
     </div>                                                                                          
   );
 }                   
-export default Home;                                                                     
+export default Home;                                                                                
