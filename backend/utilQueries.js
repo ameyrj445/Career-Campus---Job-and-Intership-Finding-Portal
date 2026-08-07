@@ -26,43 +26,43 @@ export async function getCompanies() {
         ...internshipsData.map(item => item.CompanyName),                
         ...jobsData.map(item => item.company_name)                       
     ]);
-}                          
-
-// Get all unique tags (combined from both tables)
-export async function getTags() {
-    const jobTagsList = await getJobTags();
-    const internshipTagsList = await getInternshipTags();
-    return uniqueSorted([...jobTagsList, ...internshipTagsList]);
-}
-
-// Search across both jobs and internships
-export async function searchListings(searchTerm) {
-    const normalizedTerm = normalizeString(searchTerm);
-    const allRows = [
-        ...internshipsData.map(item => ({
-            type: 'internship',
-            id: item.ID,
-            title: item.TitleAndRole,
-            company: item.CompanyName,
-            location: item.Location,
-            category: item.Category,
-            compensation: item.Stipend,
-            posted_date: item.DatePosted,
-            tags: item.Tags
-        })),
-        ...jobsData.map(item => ({
-            type: 'job',
-            id: item.id,
-            title: item.title_and_role,
-            company: item.company_name,
-            location: item.location,
-            category: item.category,
-            compensation: item.salary_LPA,
-            posted_date: item.date_posted,
-            tags: item.tags
-        }))
-    ];
-
+}                                   
+                                                       
+// Get all unique tags (combined from both tables) 
+export async function getTags() {               
+    const jobTagsList = await getJobTags();                 
+    const internshipTagsList = await getInternshipTags();           
+    return uniqueSorted([...jobTagsList, ...internshipTagsList]);       
+}      
+                                                   
+// Search across both jobs and internships                
+export async function searchListings(searchTerm) {         
+    const normalizedTerm = normalizeString(searchTerm);     
+    const allRows = [                      
+        ...internshipsData.map(item => ({ 
+            type: 'internship', 
+            id: item.ID,                    
+            title: item.TitleAndRole, 
+            company: item.CompanyName, 
+            location: item.Location, 
+            category: item.Category, 
+            compensation: item.Stipend,  
+            posted_date: item.DatePosted,   
+            tags: item.Tags   
+        })),                             
+        ...jobsData.map(item => ({ 
+            type: 'job', 
+            id: item.id, 
+            title: item.title_and_role, 
+            company: item.company_name, 
+            location: item.location, 
+            category: item.category, 
+            compensation: item.salary_LPA,     
+            posted_date: item.date_posted,  
+            tags: item.tags   
+        })) 
+    ]; 
+ 
     const filteredRows = normalizedTerm
         ? allRows.filter(row =>
             normalizeString(row.title).includes(normalizedTerm) ||
