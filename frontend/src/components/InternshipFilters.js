@@ -91,24 +91,24 @@ function InternshipFilters() {
         // Keep the full location string for filtering but display without India suffix                       
         const uniqueLocations = [...new Set(internships.map(intern => intern.Location))].filter(Boolean); 
         const uniqueCompanies = [...new Set(internships.map(intern => intern.CompanyName))].filter(Boolean); 
-                                                                                                                      
-        setCategories(uniqueCategories.map(cat => ({ value: cat, label: cat })));                                           
-        setLocations(uniqueLocations.map(loc => ({ value: loc, label: loc })));         
-        setCompanies(uniqueCompanies.map(comp => ({ value: comp, label: comp })));                             
-      }                                                                              
-    };     
+                                                                                                                       
+        setCategories(uniqueCategories.map(cat => ({ value: cat, label: cat })));                                            
+        setLocations(uniqueLocations.map(loc => ({ value: loc, label: loc })));          
+        setCompanies(uniqueCompanies.map(comp => ({ value: comp, label: comp })));                              
+      }                                                                               
+    };      
       
-    fetchFilterOptions();
-  }, [internships]);
-
-  // State to track expanded sections
-  const [expandedSections, setExpandedSections] = useState({
-    companies: true,
-    locations: true,
-    remote: true,
-    categories: true,
-    duration: true
-  });
+    fetchFilterOptions(); 
+  }, [internships]); 
+ 
+  // State to track expanded sections 
+  const [expandedSections, setExpandedSections] = useState({ 
+    companies: true, 
+    locations: true, 
+    remote: true, 
+    categories: true, 
+    duration: true 
+  }); 
 
   const toggleSection = (section) => {
     setExpandedSections(prev => ({
