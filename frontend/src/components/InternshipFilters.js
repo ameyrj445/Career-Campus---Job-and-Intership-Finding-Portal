@@ -109,25 +109,25 @@ function InternshipFilters() {
     categories: true, 
     duration: true 
   }); 
-
-  const toggleSection = (section) => {
-    setExpandedSections(prev => ({
-      ...prev,
-      [section]: !prev[section]
-    }));
-  };
-
-  const handleChange = (name, value, isCheckbox = false) => {
+ 
+  const toggleSection = (section) => { 
+    setExpandedSections(prev => ({ 
+      ...prev, 
+      [section]: !prev[section] 
+    })); 
+  }; 
+ 
+  const handleChange = (name, value, isCheckbox = false) => { 
     if (isCheckbox) {
-      setLocalFilters(prev => {
-        const newSet = new Set(prev[name]);
+      setLocalFilters(prev => { 
+        const newSet = new Set(prev[name]); 
         if (newSet.has(value)) {
-          newSet.delete(value);
-        } else {
-          newSet.add(value);
-        }
+          newSet.delete(value); 
+        } else { 
+          newSet.add(value); 
+        } 
         return { ...prev, [name]: newSet };
-      });
+      }); 
     } else {
       setLocalFilters(prev => ({ ...prev, [name]: value }));
     }
