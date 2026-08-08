@@ -65,12 +65,12 @@ export async function searchListings(searchTerm) {
  
     const filteredRows = normalizedTerm
         ? allRows.filter(row =>
-            normalizeString(row.title).includes(normalizedTerm) ||
-            normalizeString(row.company).includes(normalizedTerm) ||
-            normalizeString(row.category).includes(normalizedTerm) ||
-            normalizeString(row.tags).includes(normalizedTerm)
-        )
-        : allRows;
-
+            normalizeString(row.title).includes(normalizedTerm) ||   
+            normalizeString(row.company).includes(normalizedTerm) ||  
+            normalizeString(row.category).includes(normalizedTerm) ||   
+            normalizeString(row.tags).includes(normalizedTerm)   
+        )  
+        : allRows;    
+   
     return filteredRows.sort((a, b) => (b.posted_date || '').localeCompare(a.posted_date || ''));
-} 
+}      
