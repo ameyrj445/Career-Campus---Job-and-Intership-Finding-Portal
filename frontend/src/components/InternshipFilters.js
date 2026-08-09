@@ -117,22 +117,22 @@ function InternshipFilters() {
     })); 
   }; 
  
-  const handleChange = (name, value, isCheckbox = false) => { 
-    if (isCheckbox) {
-      setLocalFilters(prev => { 
-        const newSet = new Set(prev[name]); 
-        if (newSet.has(value)) {
-          newSet.delete(value); 
-        } else { 
-          newSet.add(value); 
-        } 
-        return { ...prev, [name]: newSet };
-      }); 
-    } else {
-      setLocalFilters(prev => ({ ...prev, [name]: value }));
-    }
-  };
-
+  const handleChange = (name, value, isCheckbox = false) => {  
+    if (isCheckbox) { 
+      setLocalFilters(prev => {  
+        const newSet = new Set(prev[name]);  
+        if (newSet.has(value)) { 
+          newSet.delete(value);  
+        } else {  
+          newSet.add(value);  
+        }  
+        return { ...prev, [name]: newSet }; 
+      });  
+    } else { 
+      setLocalFilters(prev => ({ ...prev, [name]: value })); 
+    } 
+  }; 
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     const filtersToApply = {
