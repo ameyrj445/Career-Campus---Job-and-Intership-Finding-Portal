@@ -250,25 +250,25 @@ export const JobProvider = ({ children }) => {
         return activeView === 'jobs' ? jobFilters : internshipFilters;
     }, [activeView, jobFilters, internshipFilters]);
  
-    return ( 
-        <JobContext.Provider value={{ 
-            jobs, 
-            internships,  
-            loading, 
-            error, 
-            activeView, 
-            filters: getCurrentFilters(), 
-            companies, 
-            locations, 
-            categories, 
-            tags, 
-            updateFilters, 
-            clearFilters, 
-            switchView 
-        }}> 
-            {children} 
-        </JobContext.Provider>               
-    );              
-};           
-export default JobContext; 
- 
+    return (  
+        <JobContext.Provider value={{  
+            jobs,  
+            internships,   
+            loading,  
+            error,   
+            activeView,  
+            filters: getCurrentFilters(),  
+            companies,  
+            locations,  
+            categories,  
+            tags,  
+            updateFilters,  
+            clearFilters,  
+            switchView  
+        }}>  
+            {children}  
+        </JobContext.Provider>                
+    );               
+};            
+export default JobContext;  
+  
