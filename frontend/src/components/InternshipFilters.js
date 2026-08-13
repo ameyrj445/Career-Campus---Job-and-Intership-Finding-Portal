@@ -285,16 +285,16 @@ function InternshipFilters() {
           />
         </div>
 
-        <div className="filter-buttons">
-          <button type="submit" className="apply-filters">
-            Apply Filters
-          </button>
-          <button type="button" onClick={handleClear} className="clear-filters">
-            Clear Filters
-          </button>
-        </div>
-      </form>
-    </div>
+        <div className="filter-buttons"> 
+          <button type="submit" className="apply-filters"> 
+            Apply Filters 
+          </button> 
+          <button type="button" onClick={handleClear} className="clear-filters"> 
+            Clear Filters 
+          </button> 
+        </div> 
+      </form> 
+    </div> 
   );
 }
 
