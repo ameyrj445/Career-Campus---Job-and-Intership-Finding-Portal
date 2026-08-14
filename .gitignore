@@ -10,11 +10,11 @@
 # Environment files
 .env
 *.env
-/frontend/.env.local
-/frontend/.env.development.local
-/frontend/.env.test.local
-/frontend/.env.production.local
-/backend/.env       
+/frontend/.env.local 
+/frontend/.env.development.local 
+/frontend/.env.test.local 
+/frontend/.env.production.local 
+/backend/.env        
 
 # Logs
 npm-debug.log*
